@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MONO — Move On, Never Ordinary | 3D Clock View & Contact</title>
+  
+  <!-- Meta SEO & Social Sharing -->
+  <meta name="description" content="MONO Keychain Digital Watch — Move On, Never Ordinary. 3D Interactive Showroom & Official Contact (+62 852-4021-1742 / @mono_.time).">
+  <meta property="og:title" content="MONO — Move On, Never Ordinary | 3D Clock & Contact">
+  <meta property="og:description" content="Explore the MONO retro-futuristic digital keychain watch in interactive 360° 3D. Contact us via WhatsApp.">
+  <meta property="og:image" content="assets/all_watches_lineup.png">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/mono_star_clean.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="intro-active">
+
+  <!-- Cute Intro Mascot Loader Overlay -->
+  <aside id="mascot-intro-overlay" class="mascot-intro-overlay" aria-label="Mono Intro Animation">
+    <div class="intro-scene-card">
+      <div class="intro-animation-stage">
+        <!-- Floating Yellow Mascot Star -->
+        <img src="assets/mono_star_clean.png" alt="Mono Star" class="intro-star-mascot">
+        <!-- Mono Main Mascot -->
+        <img src="assets/mono_mascot_cropped.png" alt="Mono Mascot" class="intro-mono-mascot">
+        <!-- Keychain Watch Mono is Holding & Inspecting -->
+        <div class="intro-watch-prop">
+          <img src="assets/mono_blue.png" alt="Mono Blue Watch" class="intro-held-watch">
+          <span class="intro-watch-beep-ripple"></span>
+        </div>
+        <!-- Speech / Thought Bubble -->
+        <div class="intro-speech-bubble">
+          <span class="speech-brand">MONO!</span>
+          <span class="speech-quote">Move On, Never Ordinary <i class="bi bi-fire" style="color: #FF5722;"></i></span>
+        </div>
+      </div>
+      <div class="intro-progress-bar">
+        <div class="intro-progress-fill"></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Floating Side Pop-up & Catapult Watches on Scroll -->
+  <div class="scroll-catapult-container" aria-hidden="true">
+    <div class="catapult-watch side-left" data-trigger="0.10" style="--base-rot: -14deg;">
+      <img src="assets/mono_blue.png" alt="Mono Blue">
+    </div>
+    <div class="catapult-watch side-right" data-trigger="0.22" style="--base-rot: 18deg;">
+      <img src="assets/mono_red.png" alt="Mono Red">
+    </div>
+    <div class="catapult-watch side-left" data-trigger="0.38" style="--base-rot: 22deg;">
+      <img src="assets/mono_mint.png" alt="Mono Mint">
+    </div>
+    <div class="catapult-watch side-right" data-trigger="0.54" style="--base-rot: -16deg;">
+      <img src="assets/mono_white.png" alt="Mono White">
+    </div>
+    <div class="catapult-watch side-left" data-trigger="0.70" style="--base-rot: -20deg;">
+      <img src="assets/mono_black.png" alt="Mono Black">
+    </div>
+    <div class="catapult-watch side-right" data-trigger="0.84" style="--base-rot: 24deg;">
+      <img src="assets/mono_capsule_black.png" alt="Mono Capsule Black">
+    </div>
+  </div>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-logo-wrap" title="MONO — Move On, Never Ordinary">
+        <img src="assets/mono_logo_clean.png" alt="MONO Logo" class="brand-logo-img">
+        <span class="brand-tagline">MOVE ON, NEVER ORDINARY</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="main-nav">
+        <a href="#3d-clock" class="active">3D Watch View</a>
+        <a href="#fitur">Features & Specs</a>
+        <a href="#kontak">Contact Us</a>
+      </nav>
+
+      <!-- Direct Contact CTA -->
+      <div class="header-action-btn">
+        <a href="#kontak" class="btn btn-primary btn-sm">
+          <i class="bi bi-chat-dots-fill"></i>
+          <span>Contact Us</span>
+        </a>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu">
+    <a href="#3d-clock">3D Interactive Watch View</a>
+    <a href="#fitur">Features & Specifications</a>
+    <a href="#kontak">Contact Us (+62 852-4021-1742)</a>
+    <button onclick="contactRenoWhatsApp('general')" class="btn btn-yellow" style="margin-top: 0.5rem; width: 100%;">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" style="margin-right: 6px; vertical-align: middle;">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.204 8.204 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm-3.53 4.2c-.19 0-.52.07-.79.37-.27.3-.92.9-.92 2.2 0 1.3.95 2.56 1.08 2.73.13.17 1.87 2.85 4.53 4 2.66 1.15 2.66.77 3.14.72.48-.05 1.55-.63 1.77-1.25.22-.61.22-1.13.15-1.25-.07-.12-.26-.19-.55-.33-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.65.15-.19.3-.74.95-.91 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.3-.02-.46.13-.61.13-.13.29-.34.43-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49-.17-.01-.36-.01-.55-.01z"/>
+      </svg>
+      <span>Chat with Us on WhatsApp</span>
+    </button>
+  </div>
+
+  <!-- Hero & 3D Interactive Clock Section -->
+  <section class="hero-section" id="3d-clock">
+    
+    <!-- Canva Decorative Corner Gear Wheel Top-Left (Large) -->
+    <svg class="canva-ornament canva-gear-corner-top-left" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="75" stroke="#1448FF" stroke-width="5" stroke-dasharray="10 8" fill="none" opacity="0.35"/>
+      <circle cx="100" cy="100" r="48" fill="#1448FF" opacity="0.12"/>
+      <g opacity="0.4" fill="#1448FF">
+        <rect x="94" y="12" width="12" height="18" rx="2"/>
+        <rect x="94" y="170" width="12" height="18" rx="2"/>
+        <rect x="12" y="94" width="18" height="12" rx="2"/>
+        <rect x="170" y="94" width="18" height="12" rx="2"/>
+        <rect x="36" y="36" width="12" height="18" rx="2" transform="rotate(-45 42 45)"/>
+        <rect x="152" y="36" width="12" height="18" rx="2" transform="rotate(45 158 45)"/>
+        <rect x="36" y="152" width="12" height="18" rx="2" transform="rotate(45 42 161)"/>
+        <rect x="152" y="152" width="12" height="18" rx="2" transform="rotate(-45 158 161)"/>
+      </g>
+    </svg>
+
+    <!-- Canva Decorative Gear Top-Right (Yellow accent) -->
+    <svg class="canva-ornament canva-gear-top-right" viewBox="0 0 160 160" aria-hidden="true">
+      <circle cx="80" cy="80" r="58" stroke="#FFE70E" stroke-width="4" stroke-dasharray="8 7" fill="none" opacity="0.55"/>
+      <circle cx="80" cy="80" r="36" fill="#FFE70E" opacity="0.15"/>
+      <g opacity="0.5" fill="#FFE70E">
+        <rect x="75" y="10" width="10" height="14" rx="2"/>
+        <rect x="75" y="136" width="10" height="14" rx="2"/>
+        <rect x="10" y="75" width="14" height="10" rx="2"/>
+        <rect x="136" y="75" width="14" height="10" rx="2"/>
+        <rect x="27" y="27" width="10" height="14" rx="2" transform="rotate(-45 32 34)"/>
+        <rect x="119" y="27" width="10" height="14" rx="2" transform="rotate(45 124 34)"/>
+        <rect x="27" y="119" width="10" height="14" rx="2" transform="rotate(45 32 126)"/>
+        <rect x="119" y="119" width="10" height="14" rx="2" transform="rotate(-45 124 126)"/>
+      </g>
+    </svg>
+
+    <!-- Canva Dashed Ring Mid-Right (decorative) -->
+    <svg class="canva-ornament canva-ring-mid-right" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="55" stroke="#1ABCFF" stroke-width="2.5" stroke-dasharray="6 6" fill="none" opacity="0.4"/>
+      <circle cx="60" cy="60" r="38" stroke="#1ABCFF" stroke-width="1.5" stroke-dasharray="4 4" fill="none" opacity="0.25"/>
+      <circle cx="60" cy="60" r="18" fill="#1ABCFF" opacity="0.08"/>
+    </svg>
+
+    <div class="container">
+      
+      <!-- Headline Header -->
+      <div class="hero-header-box">
+        <div class="hero-eyebrow">RETRO DIGITAL KEYCHAIN WATCH</div>
+
+        <h1 class="hero-title">
+          MOVE ON, <br>
+          <span class="glinter-blue">NEVER ORDINARY</span>
+          <img src="assets/mono_star_clean.png" alt="Star Mascot" class="hero-star-icon">
+        </h1>
+
+        <p class="hero-subtitle">
+          Explore the MONO digital keychain watch in interactive 360° 3D. Rotate the body, zoom into button details, hear the authentic beep, and pick your favorite color — all right here.
+        </p>
+      </div>
+
+      <!-- 3D Studio Interactive Grid -->
+      <div class="studio-grid">
+        
+        <!-- Left Column: Three.js 3D WebGL Canvas Viewport -->
+        <div class="viewport-card">
+          
+          <!-- Top HUD Overlay -->
+          <div class="viewport-hud-top">
+
+            <div class="hud-controls-group">
+              <button class="hud-btn" id="btn-reset-cam" title="Reset Camera Position">
+                Reset View
+              </button>
+            </div>
+          </div>
+
+          <!-- Three.js Canvas Container -->
+          <div id="three-canvas-container"></div>
+
+          <!-- Bottom Viewport Footer Bar -->
+          <div class="viewport-footer-bar">
+            <span><i class="bi bi-arrows-move" style="margin-right: 4px;"></i> Drag or touch to rotate 360°</span>
+            <span class="sep">•</span>
+            <span><i class="bi bi-zoom-in" style="margin-right: 4px;"></i> Scroll to zoom</span>
+            <span class="sep">•</span>
+            <span><i class="bi bi-volume-up-fill" style="margin-right: 4px;"></i> Click watch buttons for beep</span>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Interactive Controls & Direct Inquiry -->
+        <div class="studio-sidebar">
+          
+          <div class="control-panel-card">
+            
+            <!-- Chassis Model Switcher -->
+            <div class="panel-title-row">
+              <span class="panel-title">Watch Model</span>
+            </div>
+
+            <!-- Box Version Color Swatches -->
+            <div class="swatch-group">
+              <div class="swatch-group-label">
+                <span class="swatch-group-heading">Box Edition</span>
+                <span class="selected-name" id="selected-color-name">Cobalt Sky (Signature MONO)</span>
+              </div>
+              <div class="swatches-grid">
+                <button class="color-swatch-btn swatch-blue active" data-color="blue" title="Cobalt Sky Blue (#1448FF)"></button>
+                <button class="color-swatch-btn swatch-red" data-color="red" title="Crimson Flame"></button>
+                <button class="color-swatch-btn swatch-mint" data-color="mint" title="Mint Breeze"></button>
+                <button class="color-swatch-btn swatch-white" data-color="white" title="Glacier White"></button>
+                <button class="color-swatch-btn swatch-black" data-color="black" title="Stealth Black"></button>
+              </div>
+            </div>
+
+            <!-- Capsule Version Color Swatches -->
+            <div class="swatch-group">
+              <div class="swatch-group-label">
+                <span class="swatch-group-heading">Capsule Edition</span>
+                <span class="selected-name" id="selected-capsule-name">Capsule Noir</span>
+              </div>
+              <div class="swatches-grid">
+                <button class="color-swatch-btn swatch-capsule" data-color="capsule_black" title="Capsule Noir (Oval)"></button>
+              </div>
+            </div>
+
+            <!-- Interactive Watch Actions -->
+            <div>
+              <div class="swatch-group-label" style="margin-bottom: 0.6rem;">
+                <span>Watch Button Controls:</span>
+              </div>
+              <div class="interactive-action-buttons" style="grid-template-columns: 1fr;">
+                <button class="interactive-btn" id="btn-toggle-mode" title="Click to switch mode (Clock / Stopwatch)">
+                  <i class="bi bi-stopwatch-fill" style="color: var(--mono-blue);"></i><span id="current-mode-label" style="color: var(--mono-blue); margin-left: 4px;">CLOCK</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Technical Spec Quick Box -->
+            <div class="spec-box-card">
+              <div class="spec-row">
+                <span class="spec-lbl">Case Dimensions:</span>
+                <span class="spec-val">54 x 24 x 11 mm</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-lbl">Display:</span>
+                <span class="spec-val" style="color: #0A9E64;">Real-time TN LCD Screen</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-lbl">Body Weight:</span>
+                <span class="spec-val">Ultra-Light 24g</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-lbl">Battery Type:</span>
+                <span class="spec-val">CR2032 (Lasts 2 Years)</span>
+              </div>
+            </div>
+
+            <!-- Direct Contact CTA Box -->
+            <div class="studio-contact-cta">
+              <div class="studio-contact-title">Interested in the MONO Watch?</div>
+              <div class="studio-contact-subtitle">
+                Contact us directly via WhatsApp for color availability or ordering info.
+              </div>
+              <button onclick="contactRenoWhatsApp('color')" class="btn btn-primary" style="width: 100%;">
+                <i class="bi bi-chat-text-fill"></i>
+                <span>Ask Us About This Color</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES & SPEC HIGHLIGHTS SECTION -->
+  <section class="features-section" id="fitur">
+
+    <!-- Decorative Corner Sparkle & Orbit Elements -->
+    <svg class="canva-ornament canva-orbit-features-left" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="90" stroke="#1448FF" stroke-width="2" stroke-dasharray="8 6" fill="none" opacity="0.18"/>
+      <circle cx="100" cy="100" r="60" stroke="#FFE70E" stroke-width="2" stroke-dasharray="6 8" fill="none" opacity="0.3"/>
+      <circle cx="100" cy="10" r="6" fill="#1448FF" opacity="0.5"/>
+      <circle cx="160" cy="100" r="8" fill="#FFE70E" opacity="0.6"/>
+    </svg>
+
+    <svg class="canva-ornament canva-orbit-features-right" viewBox="0 0 220 220" aria-hidden="true">
+      <circle cx="110" cy="110" r="100" stroke="#1ABCFF" stroke-width="2.5" stroke-dasharray="10 8" fill="none" opacity="0.22"/>
+      <circle cx="110" cy="110" r="70" stroke="#51EDAD" stroke-width="2" stroke-dasharray="5 7" fill="none" opacity="0.35"/>
+      <circle cx="110" cy="40" r="7" fill="#51EDAD" opacity="0.55"/>
+      <circle cx="180" cy="110" r="5" fill="#1ABCFF" opacity="0.6"/>
+    </svg>
+
+    <!-- Decorative gear left -->
+    <svg class="canva-ornament canva-gear-features-left" viewBox="0 0 160 160" aria-hidden="true">
+      <circle cx="80" cy="80" r="58" stroke="#51EDAD" stroke-width="4" stroke-dasharray="8 7" fill="none" opacity="0.5"/>
+      <circle cx="80" cy="80" r="36" fill="#51EDAD" opacity="0.12"/>
+      <g opacity="0.45" fill="#51EDAD">
+        <rect x="75" y="10" width="10" height="14" rx="2"/>
+        <rect x="75" y="136" width="10" height="14" rx="2"/>
+        <rect x="10" y="75" width="14" height="10" rx="2"/>
+        <rect x="136" y="75" width="14" height="10" rx="2"/>
+        <rect x="27" y="27" width="10" height="14" rx="2" transform="rotate(-45 32 34)"/>
+        <rect x="119" y="27" width="10" height="14" rx="2" transform="rotate(45 124 34)"/>
+        <rect x="27" y="119" width="10" height="14" rx="2" transform="rotate(45 32 126)"/>
+        <rect x="119" y="119" width="10" height="14" rx="2" transform="rotate(-45 124 126)"/>
+      </g>
+    </svg>
+
+    <!-- Decorative dots right -->
+    <svg class="canva-ornament canva-dots-features-right" viewBox="0 0 100 180" aria-hidden="true">
+      <g fill="#1448FF" opacity="0.18">
+        <circle cx="15" cy="15" r="5"/>
+        <circle cx="45" cy="15" r="5"/>
+        <circle cx="75" cy="15" r="5"/>
+        <circle cx="15" cy="45" r="5"/>
+        <circle cx="45" cy="45" r="5"/>
+        <circle cx="75" cy="45" r="5"/>
+        <circle cx="15" cy="75" r="5"/>
+        <circle cx="45" cy="75" r="5"/>
+        <circle cx="75" cy="75" r="5"/>
+        <circle cx="15" cy="105" r="5"/>
+        <circle cx="45" cy="105" r="5"/>
+        <circle cx="75" cy="105" r="5"/>
+        <circle cx="15" cy="135" r="5"/>
+        <circle cx="45" cy="135" r="5"/>
+        <circle cx="75" cy="135" r="5"/>
+        <circle cx="15" cy="165" r="5"/>
+        <circle cx="45" cy="165" r="5"/>
+        <circle cx="75" cy="165" r="5"/>
+      </g>
+    </svg>
+
+    <div class="container">
+      
+      <div class="section-header">
+        <div class="section-eyebrow">SPECIFICATIONS & HIGHLIGHTS</div>
+        <h2 class="section-title">WHY MONO WATCH?</h2>
+        <p class="section-desc">
+          More than just a style accessory — the MONO keychain watch is built to be functional, tough, and the perfect companion for your daily casual look.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="bi bi-lightning-charge-fill" style="color: #FFE70E; font-size: 1.5rem;"></i></div>
+          <h4>Quick-Glance Time</h4>
+          <p>
+            Just glance at your bag, belt loop, or keychain — no need to fumble around pulling your smartphone out of your pocket.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="bi bi-droplet-fill" style="color: #1ABCFF; font-size: 1.5rem;"></i></div>
+          <h4>Splashproof Resistant</h4>
+          <p>
+            Safe from rain splashes while riding, hand washing, or everyday water exposure. The watch module is tightly sealed and protected.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="bi bi-feather" style="color: #51EDAD; font-size: 1.5rem;"></i></div>
+          <h4>Lightweight 24 Gram Body</h4>
+          <p>
+            Made with sturdy ABS polymer and an elastic silicone strap ring — ultra-light so it never weighs down your bag.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="bi bi-battery-charging" style="color: #1448FF; font-size: 1.5rem;"></i></div>
+          <h4>2-Year Battery Life</h4>
+          <p>
+            Powered by a standard coin battery that lasts 18–24 months, and can be easily replaced when the time comes.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OFFICIAL CONTACT INFO SECTION (CANVA SLIDE 28 RECREATION) -->
+  <section class="contact-section" id="kontak">
+
+    <!-- Decorative floating ambient stars and brand geometry -->
+    <svg class="canva-ornament canva-contact-top-left-orbit" viewBox="0 0 180 180" aria-hidden="true">
+      <circle cx="90" cy="90" r="80" stroke="#1448FF" stroke-width="3" stroke-dasharray="10 6" fill="none" opacity="0.14"/>
+      <circle cx="90" cy="90" r="50" stroke="#1ABCFF" stroke-width="2" stroke-dasharray="6 6" fill="none" opacity="0.25"/>
+    </svg>
+    
+    <!-- Canva Decorative Corner Gear Wheel Bottom-Right -->
+    <svg class="canva-ornament canva-gear-corner-bottom-right" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="75" stroke="#FFE70E" stroke-width="5" stroke-dasharray="10 8" fill="none" opacity="0.5"/>
+      <circle cx="100" cy="100" r="48" fill="#FFE70E" opacity="0.2"/>
+      <g opacity="0.55" fill="#FFE70E">
+        <rect x="94" y="12" width="12" height="18" rx="2"/>
+        <rect x="94" y="170" width="12" height="18" rx="2"/>
+        <rect x="12" y="94" width="18" height="12" rx="2"/>
+        <rect x="170" y="94" width="18" height="12" rx="2"/>
+        <rect x="36" y="36" width="12" height="18" rx="2" transform="rotate(-45 42 45)"/>
+        <rect x="152" y="36" width="12" height="18" rx="2" transform="rotate(45 158 45)"/>
+        <rect x="36" y="152" width="12" height="18" rx="2" transform="rotate(45 42 161)"/>
+        <rect x="152" y="152" width="12" height="18" rx="2" transform="rotate(-45 158 161)"/>
+      </g>
+    </svg>
+
+    <div class="container">
+      
+      <!-- Slide 28 Inspired Card Container -->
+      <div class="canva-thankyou-card">
+        
+        <div class="thankyou-bg-waves"></div>
+
+        <!-- Floating Yellow Googly Eyes Stars (from Canva slide 28) -->
+        <img src="assets/mono_star_clean.png" alt="Star Mascot" class="thankyou-star-float-1">
+        <img src="assets/mono_star_clean.png" alt="Star Mascot" class="thankyou-star-float-2">
+
+        <!-- Center Mascot Header -->
+        <div class="thankyou-mascot-row">
+          <img src="assets/mono_logo_clean.png" alt="MONO Logo" class="thankyou-mascot-img">
+        </div>
+
+        <h2 class="thankyou-title">THANK YOU</h2>
+        <div class="thankyou-tagline">MOVE ON, NEVER ORDINARY</div>
+
+        <!-- Contact Cards Grid -->
+        <div class="contact-grid">
+          
+          <!-- Official WhatsApp Hotline Card -->
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <span class="contact-icon contact-icon-wa">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#25D366" aria-hidden="true">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.204 8.204 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm-3.53 4.2c-.19 0-.52.07-.79.37-.27.3-.92.9-.92 2.2 0 1.3.95 2.56 1.08 2.73.13.17 1.87 2.85 4.53 4 2.66 1.15 2.66.77 3.14.72.48-.05 1.55-.63 1.77-1.25.22-.61.22-1.13.15-1.25-.07-.12-.26-.19-.55-.33-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.65.15-.19.3-.74.95-.91 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.3-.02-.46.13-.61.13-.13.29-.34.43-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49-.17-.01-.36-.01-.55-.01z"/>
+                </svg>
+              </span>
+              <span class="contact-card-label">WhatsApp Hotline</span>
+            </div>
+            <div class="contact-card-val">+62 852-4021-1742</div>
+            <p class="contact-card-desc">
+              Contact us directly to ask about color availability, get advice, or place an order for the MONO keychain watch. We're ready to help!
+            </p>
+            <div class="contact-btn-group">
+              <button onclick="contactRenoWhatsApp('general')" class="btn btn-yellow" style="width: 100%;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" aria-hidden="true" style="margin-right: 6px; vertical-align: middle;">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.204 8.204 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm-3.53 4.2c-.19 0-.52.07-.79.37-.27.3-.92.9-.92 2.2 0 1.3.95 2.56 1.08 2.73.13.17 1.87 2.85 4.53 4 2.66 1.15 2.66.77 3.14.72.48-.05 1.55-.63 1.77-1.25.22-.61.22-1.13.15-1.25-.07-.12-.26-.19-.55-.33-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.65.15-.19.3-.74.95-.91 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.3-.02-.46.13-.61.13-.13.29-.34.43-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49-.17-.01-.36-.01-.55-.01z"/>
+                </svg>
+                <span>Chat with Us on WhatsApp</span>
+              </button>
+              <button onclick="copyPhoneNumber(this)" class="btn btn-copy" style="width: 100%;">
+                <i class="bi bi-clipboard-check" style="margin-right: 6px;"></i>
+                <span>Copy Phone Number</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/mono_logo_clean.png" alt="MONO Logo">
+          <div class="footer-tagline">MOVE ON, NEVER ORDINARY</div>
+          <p class="footer-desc">
+            An expressive, bold, and character-driven digital pocket watch & keychain accessory — ready to complete your everyday style.
+          </p>
+        </div>
+
+        <div class="footer-info-col">
+          <strong>Official Contact:</strong>
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="#25D366" aria-hidden="true">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.204 8.204 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm-3.53 4.2c-.19 0-.52.07-.79.37-.27.3-.92.9-.92 2.2 0 1.3.95 2.56 1.08 2.73.13.17 1.87 2.85 4.53 4 2.66 1.15 2.66.77 3.14.72.48-.05 1.55-.63 1.77-1.25.22-.61.22-1.13.15-1.25-.07-.12-.26-.19-.55-.33-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.65.15-.19.3-.74.95-.91 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.3-.02-.46.13-.61.13-.13.29-.34.43-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49-.17-.01-.36-.01-.55-.01z"/>
+            </svg>
+            WhatsApp: 0852-4021-1742
+          </span>
+        </div>
+      </div>
+
+      <div class="footer-bottom-copy">
+        © 2026 <strong>MONO™</strong>. Made by San San
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/6285240211742?text=Hello%20MONO%20Time!%20I%27d%20like%20to%20ask%20about%20the%20MONO%20watch" class="floating-whatsapp" target="_blank" rel="noopener" title="Chat with Us on WhatsApp (0852-4021-1742)">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.204 8.204 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm-3.53 4.2c-.19 0-.52.07-.79.37-.27.3-.92.9-.92 2.2 0 1.3.95 2.56 1.08 2.73.13.17 1.87 2.85 4.53 4 2.66 1.15 2.66.77 3.14.72.48-.05 1.55-.63 1.77-1.25.22-.61.22-1.13.15-1.25-.07-.12-.26-.19-.55-.33-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.65.15-.19.3-.74.95-.91 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.3-.02-.46.13-.61.13-.13.29-.34.43-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49-.17-.01-.36-.01-.55-.01z"/>
+    </svg>
+  </a>
+
+  <!-- Vendor Scripts (Local offline copies) -->
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/vendor/OrbitControls.js"></script>
+
+  <!-- Application Scripts -->
+  <script src="js/three-app.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
+
