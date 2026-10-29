@@ -294,7 +294,7 @@
 
 .catapult-watch {
   position: absolute;
-  width: 440px;
+  width: 340px;
   max-width: 42vw;
   opacity: 0;
   pointer-events: none;
@@ -312,7 +312,7 @@
 
 /* Base placements */
 .catapult-watch.side-left {
-  left: -2%;
+  left: -100px;
   bottom: 12%;
   transform: translate3d(-60px, 220px, -200px) scale(0.85) rotate(calc(var(--base-rot) - 20deg));
 }
@@ -866,25 +866,24 @@ header.site-header.nav-hidden {
   background: linear-gradient(
     115deg,
     #1448FF 0%,
-    #1448FF 35%,
-    #5D8BFF 46%,
-    #DCE7FF 50%,
-    #5D8BFF 54%,
-    #1448FF 65%,
+    #306afd 40%,
+    #9ebbff 50%,
+    #306afd 60%,
+    #1448FF 80%,
     #1448FF 100%
   );
   background-size: 260% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: glinterSweep 5s ease-in-out infinite;
+  animation: glinterSweep 3s linear infinite;
 }
 
 @keyframes glinterSweep {
   0% {
-    background-position: 200% 0;
+    background-position: 100% 0;
   }
   40%, 100% {
-    background-position: -80% 0;
+    background-position: -200% 0;
   }
 }
 
@@ -1535,14 +1534,21 @@ header.site-header.nav-hidden {
   z-index: 2;
 }
 
-/* Contact Cards Grid — Centered Single WhatsApp Card */
+/* Contact Cards Grid — WhatsApp & Instagram */
 .contact-grid {
-  display: flex;
-  justify-content: center;
-  max-width: 520px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  max-width: 760px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .contact-card {
@@ -1589,6 +1595,11 @@ header.site-header.nav-hidden {
   color: #25D366;
 }
 
+.contact-icon-ig {
+  background: linear-gradient(135deg, rgba(249, 206, 52, 0.18), rgba(238, 42, 123, 0.2), rgba(98, 40, 215, 0.12));
+  color: #E1306C;
+}
+
 .contact-card-label {
   font-size: 0.85rem;
   font-weight: 800;
@@ -1628,6 +1639,20 @@ header.site-header.nav-hidden {
   border: 1px solid #E2E8F0;
   font-size: 0.82rem;
   padding: 0.55rem 1rem;
+}
+
+.btn-instagram {
+  background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 38%, #6228d7 75%, #3f5efb 100%);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 10px 24px rgba(129, 52, 175, 0.28);
+}
+
+.btn-instagram:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(129, 52, 175, 0.35);
 }
 
 .btn-copy:hover {
