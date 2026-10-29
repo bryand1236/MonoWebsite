@@ -9,6 +9,100 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const RENO_WHATSAPP = '6285240211742';
 
+  // FLOATING LOCAL-TIME WATCHES (Top-Left Blue & Top-Right Red)
+  const floatingClocks = document.querySelectorAll('.floating-mono-clock-time');
+  if (floatingClocks.length > 0) {
+    const clockFormatter = new Intl.DateTimeFormat(undefined, {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+
+    function updateFloatingClocks() {
+      const now = new Date();
+      const timeStr = clockFormatter.format(now);
+      const isoStr = now.toISOString();
+      floatingClocks.forEach((clock) => {
+        clock.textContent = timeStr;
+        clock.dateTime = isoStr;
+      });
+    }
+
+    updateFloatingClocks();
+    window.setInterval(updateFloatingClocks, 1000);
+
+    // DRAGGABLE FLOATING CLOCKS
+    const clockContainers = document.querySelectorAll('.floating-mono-clock');
+    clockContainers.forEach((clock) => {
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let initialLeft = 0;
+      let initialTop = 0;
+
+      function onPointerDown(e) {
+        // Only react to main button click / touch
+        if (e.button !== undefined && e.button !== 0) return;
+        
+        isDragging = true;
+        clock.classList.add('is-dragging');
+        clock.classList.add('has-dragged');
+
+        // Read current computed bounding rect
+        const rect = clock.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+
+        startX = e.clientX;
+        startY = e.clientY;
+
+        // Switch to absolute positioning with pixel coordinates
+        clock.style.left = `${initialLeft}px`;
+        clock.style.top = `${initialTop}px`;
+        clock.style.right = 'auto';
+        clock.style.bottom = 'auto';
+
+        clock.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      }
+
+      function onPointerMove(e) {
+        if (!isDragging) return;
+
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+
+        let newLeft = initialLeft + deltaX;
+        let newTop = initialTop + deltaY;
+
+        // Keep inside viewport with small margin
+        const rect = clock.getBoundingClientRect();
+        const maxLeft = window.innerWidth - rect.width - 8;
+        const maxTop = window.innerHeight - rect.height - 8;
+
+        newLeft = Math.max(8, Math.min(newLeft, maxLeft));
+        newTop = Math.max(8, Math.min(newTop, maxTop));
+
+        clock.style.left = `${newLeft}px`;
+        clock.style.top = `${newTop}px`;
+      }
+
+      function onPointerUp(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        clock.classList.remove('is-dragging');
+        try {
+          clock.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+      }
+
+      clock.addEventListener('pointerdown', onPointerDown);
+      clock.addEventListener('pointermove', onPointerMove);
+      clock.addEventListener('pointerup', onPointerUp);
+      clock.addEventListener('pointercancel', onPointerUp);
+    });
+  }
+
   // 0. CUTE MASCOT INTRO LOADER ANIMATION
   const introOverlay = document.getElementById('mascot-intro-overlay');
   if (introOverlay) {
@@ -153,6 +247,67 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   const preorderVariant = document.getElementById('preorder-variant');
 
+  // PREORDER MODAL
+  const preorderModal = document.getElementById('preorder-modal');
+  const preorderOpenButtons = document.querySelectorAll('.open-preorder-modal-btn');
+  const preorderCloseButton = preorderModal && preorderModal.querySelector('.preorder-modal-close');
+  let preorderPreviousFocus = null;
+
+  function closePreorderModal() {
+    if (!preorderModal || !preorderModal.classList.contains('is-open')) return;
+    preorderModal.classList.remove('is-open');
+    preorderModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('preorder-modal-open');
+    if (preorderPreviousFocus instanceof HTMLElement) preorderPreviousFocus.focus();
+  }
+
+  if (preorderModal) {
+    preorderOpenButtons.forEach((button) => {
+      button.setAttribute('aria-controls', 'preorder-modal');
+      button.setAttribute('aria-haspopup', 'dialog');
+      button.addEventListener('click', () => {
+        preorderPreviousFocus = button;
+        preorderModal.classList.add('is-open');
+        preorderModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('preorder-modal-open');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileToggle = document.querySelector('.mobile-nav-toggle');
+        if (mobileMenu) mobileMenu.classList.remove('open');
+        if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+        const firstField = preorderModal.querySelector('input, select, textarea') || preorderCloseButton;
+        if (firstField) firstField.focus({ preventScroll: true });
+      });
+    });
+
+    if (preorderCloseButton) preorderCloseButton.addEventListener('click', closePreorderModal);
+    preorderModal.addEventListener('click', (event) => {
+      if (event.target === preorderModal) closePreorderModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!preorderModal.classList.contains('is-open')) return;
+      if (event.key === 'Escape') {
+        closePreorderModal();
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const focusableElements = Array.from(preorderModal.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ));
+        if (focusableElements.length === 0) return;
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+  }
+
   swatchButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const color = btn.dataset.color;
@@ -200,19 +355,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const details = [
-        'Hello MONO Time! I’d like to preorder a watch.',
+        'Halo MONO Time! Saya ingin melakukan preorder jam tangan MONO.',
         '',
-        `Name: ${String(formData.get('name') || '').trim()}`,
+        `Nama: ${String(formData.get('name') || '').trim()}`,
         `WhatsApp: ${String(formData.get('phone') || '').trim()}`,
-        `Watch: ${edition} — ${variantName}`,
-        `Quantity: ${String(formData.get('quantity') || '')}`,
-        `Delivery city / area: ${String(formData.get('city') || '').trim()}`
+        `Model / Varian: ${edition} — ${variantName}`,
+        `Jumlah: ${String(formData.get('quantity') || '')}`
       ];
-      const email = String(formData.get('email') || '').trim();
       const notes = String(formData.get('notes') || '').trim();
-      if (email) details.push(`Email: ${email}`);
-      if (notes) details.push(`Notes: ${notes}`);
-      details.push('', 'I understand this request is not confirmed until MONO replies.');
+      if (notes) details.push(`Catatan: ${notes}`);
 
       const waUrl = `https://wa.me/${RENO_WHATSAPP}?text=${encodeURIComponent(details.join('\n'))}`;
       window.open(waUrl, '_blank', 'noopener,noreferrer');
@@ -377,5 +528,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial check
     handleScrollCatapult();
+  }
+
+  // 9. PREORDER SHOWCASE CLOCK CYCLER / CAROUSEL
+  const carouselImages = document.querySelectorAll('.preorder-carousel-img');
+  const carouselDots = document.querySelectorAll('.preorder-dot');
+  const carouselCaption = document.getElementById('preorder-carousel-caption');
+  const carouselContainer = document.querySelector('.preorder-banner-preview');
+
+  if (carouselImages.length > 0) {
+    let activeCarouselIndex = 0;
+    let carouselTimer = null;
+
+    function showCarouselSlide(index) {
+      if (index < 0 || index >= carouselImages.length) return;
+      activeCarouselIndex = index;
+
+      carouselImages.forEach((img, i) => {
+        if (i === activeCarouselIndex) {
+          img.classList.add('is-active');
+        } else {
+          img.classList.remove('is-active');
+        }
+      });
+
+      carouselDots.forEach((dot, i) => {
+        if (i === activeCarouselIndex) {
+          dot.classList.add('is-active');
+        } else {
+          dot.classList.remove('is-active');
+        }
+      });
+
+      if (carouselCaption) {
+        const activeImg = carouselImages[activeCarouselIndex];
+        const name = activeImg.dataset.name || activeImg.alt || '';
+        carouselCaption.textContent = name;
+      }
+    }
+
+    function nextCarouselSlide() {
+      const next = (activeCarouselIndex + 1) % carouselImages.length;
+      showCarouselSlide(next);
+    }
+
+    function startCarousel() {
+      stopCarousel();
+      carouselTimer = setInterval(nextCarouselSlide, 2600);
+    }
+
+    function stopCarousel() {
+      if (carouselTimer) {
+        clearInterval(carouselTimer);
+        carouselTimer = null;
+      }
+    }
+
+    // Dot click support
+    carouselDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const targetIdx = parseInt(dot.dataset.target, 10);
+        if (!isNaN(targetIdx)) {
+          showCarouselSlide(targetIdx);
+          startCarousel(); // reset timer on manual interaction
+        }
+      });
+    });
+
+    // Pause on hover
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', stopCarousel);
+      carouselContainer.addEventListener('mouseleave', startCarousel);
+    }
+
+    startCarousel();
   }
 });
