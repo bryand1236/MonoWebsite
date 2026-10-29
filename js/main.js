@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     black: 'Stealth Black',
     capsule_black: 'Capsule Noir'
   };
+  const preorderVariant = document.getElementById('preorder-variant');
 
   swatchButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -173,9 +174,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         window.MonoWatch3D.switchColor(color);
+        if (preorderVariant && colorNameMap[color]) {
+          preorderVariant.value = color;
+        }
       }
     });
   });
+
+  // 2b. PREORDER REQUEST VIA WHATSAPP (PERSISTENCE CAN BE ADDED LATER)
+  const preorderForm = document.getElementById('preorder-form');
+  if (preorderForm) {
+    preorderForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!preorderForm.reportValidity()) return;
+
+      const formData = new FormData(preorderForm);
+      const variant = String(formData.get('variant') || '');
+      const variantName = colorNameMap[variant];
+      const edition = variant.startsWith('capsule') ? 'Capsule Edition' : 'Box Edition';
+      const status = document.getElementById('preorder-status');
+      if (!variantName) {
+        if (status) status.textContent = 'Please select a valid watch edition and color.';
+        return;
+      }
+
+      const details = [
+        'Hello MONO Time! I’d like to preorder a watch.',
+        '',
+        `Name: ${String(formData.get('name') || '').trim()}`,
+        `WhatsApp: ${String(formData.get('phone') || '').trim()}`,
+        `Watch: ${edition} — ${variantName}`,
+        `Quantity: ${String(formData.get('quantity') || '')}`,
+        `Delivery city / area: ${String(formData.get('city') || '').trim()}`
+      ];
+      const email = String(formData.get('email') || '').trim();
+      const notes = String(formData.get('notes') || '').trim();
+      if (email) details.push(`Email: ${email}`);
+      if (notes) details.push(`Notes: ${notes}`);
+      details.push('', 'I understand this request is not confirmed until MONO replies.');
+
+      const waUrl = `https://wa.me/${RENO_WHATSAPP}?text=${encodeURIComponent(details.join('\n'))}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      if (status) {
+        status.textContent = 'Your preorder message is ready. Send it in WhatsApp to contact MONO. Nothing has been saved on this website. ';
+        const fallbackLink = document.createElement('a');
+        fallbackLink.href = waUrl;
+        fallbackLink.target = '_blank';
+        fallbackLink.rel = 'noopener noreferrer';
+        fallbackLink.textContent = 'Open WhatsApp';
+        status.append(fallbackLink);
+      }
+    });
+  }
 
   // 3. 3D CHASSIS TOGGLE (Classic Box vs Capsule Oval)
   const chassisOptions = document.querySelectorAll('.model-chassis-toggle .toggle-option');

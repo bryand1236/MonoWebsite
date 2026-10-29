@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MONO — Move On, Never Ordinary | 3D Clock View & Contact</title>
+  <title>MONO</title>
   
   <!-- Meta SEO & Social Sharing -->
   <meta name="description" content="MONO Keychain Digital Watch — Move On, Never Ordinary. 3D Interactive Showroom & Official Contact (+62 852-4021-1742 / @mono_.time).">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/mono_star_clean.png">
+  <link rel="icon" type="image/png" href="assets/mono_logo_clean.png">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -79,15 +79,16 @@
       <!-- Desktop Nav -->
       <nav class="main-nav">
         <a href="#3d-clock" class="active">3D Watch View</a>
+        <a href="#preorder">Preorder</a>
         <a href="#fitur">Features & Specs</a>
         <a href="#kontak">Contact Us</a>
       </nav>
 
       <!-- Direct Contact CTA -->
       <div class="header-action-btn">
-        <a href="#kontak" class="btn btn-primary btn-sm">
-          <i class="bi bi-chat-dots-fill"></i>
-          <span>Contact Us</span>
+        <a href="#preorder" class="btn btn-primary btn-sm">
+          <i class="bi bi-bag-check-fill"></i>
+          <span>Preorder</span>
         </a>
         <button class="mobile-nav-toggle" aria-label="Toggle navigation">
           <span></span>
@@ -101,6 +102,7 @@
   <!-- Mobile Drawer Menu -->
   <div class="mobile-menu">
     <a href="#3d-clock">3D Interactive Watch View</a>
+    <a href="#preorder">Preorder a Watch</a>
     <a href="#fitur">Features & Specifications</a>
     <a href="#kontak">Contact Us (+62 852-4021-1742)</a>
     <button onclick="contactRenoWhatsApp('general')" class="btn btn-yellow" style="margin-top: 0.5rem; width: 100%;">
@@ -286,6 +288,74 @@
 
       </div>
 
+    </div>
+  </section>
+
+  <!-- PREORDER REQUEST FORM -->
+  <section class="preorder-section" id="preorder">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">RESERVE YOUR MONO</div>
+        <h2 class="section-title">PREORDER YOUR WATCH</h2>
+        <p class="section-desc">
+          Choose your edition and leave your details. We’ll open WhatsApp with your preorder request so you can send it directly to our team.
+        </p>
+      </div>
+
+      <form class="preorder-form" id="preorder-form">
+        <div class="preorder-form-grid">
+          <label class="preorder-field">
+            <span>Full name <span aria-hidden="true">*</span></span>
+            <input type="text" name="name" autocomplete="name" maxlength="100" required>
+          </label>
+
+          <label class="preorder-field">
+            <span>WhatsApp number <span aria-hidden="true">*</span></span>
+            <input type="tel" name="phone" autocomplete="tel" maxlength="30" placeholder="+62 812 3456 7890" required>
+          </label>
+
+          <label class="preorder-field">
+            <span>Watch edition and color <span aria-hidden="true">*</span></span>
+            <select name="variant" id="preorder-variant" required>
+              <option value="blue">Box Edition — Cobalt Sky (Signature MONO)</option>
+              <option value="red">Box Edition — Crimson Flame</option>
+              <option value="mint">Box Edition — Mint Breeze</option>
+              <option value="white">Box Edition — Glacier White</option>
+              <option value="black">Box Edition — Stealth Black</option>
+              <option value="capsule_black">Capsule Edition — Capsule Noir</option>
+            </select>
+          </label>
+
+          <label class="preorder-field">
+            <span>Quantity <span aria-hidden="true">*</span></span>
+            <input type="number" name="quantity" min="1" max="10" value="1" required>
+          </label>
+
+          <label class="preorder-field">
+            <span>Delivery city / area <span aria-hidden="true">*</span></span>
+            <input type="text" name="city" autocomplete="address-level2" maxlength="100" required>
+          </label>
+
+          <label class="preorder-field">
+            <span>Email <span class="preorder-optional">(optional)</span></span>
+            <input type="email" name="email" autocomplete="email" maxlength="254">
+          </label>
+
+          <label class="preorder-field preorder-field-wide">
+            <span>Notes <span class="preorder-optional">(optional)</span></span>
+            <textarea name="notes" rows="3" maxlength="500" placeholder="Anything else we should know?"></textarea>
+          </label>
+        </div>
+
+        <p class="preorder-disclaimer">
+          No payment is taken on this page. Your request is not submitted until you send the prepared message in WhatsApp.
+        </p>
+        <button type="submit" class="btn btn-primary preorder-submit">
+          <i class="bi bi-whatsapp"></i>
+          <span>Continue preorder on WhatsApp</span>
+        </button>
+        <p class="preorder-status" id="preorder-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -558,4 +628,3 @@
 
 </body>
 </html>
-

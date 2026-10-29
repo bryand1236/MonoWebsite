@@ -380,6 +380,7 @@
 /* Initially hidden while intro plays, revealed smoothly in sequence */
 body.intro-active .site-header,
 body.intro-active .hero-section,
+body.intro-active .preorder-section,
 body.intro-active .features-section,
 body.intro-active .contact-section,
 body.intro-active .site-footer,
@@ -409,6 +410,11 @@ body.page-revealed .hero-section {
 body.page-revealed .features-section {
   animation: loadFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: 0.5s;
+}
+
+body.page-revealed .preorder-section {
+  animation: loadFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.4s;
 }
 
 body.page-revealed .contact-section {
@@ -1313,6 +1319,112 @@ header.site-header.nav-hidden {
   font-size: 0.82rem;
   color: var(--mono-dark-muted);
   line-height: 1.45;
+}
+
+/* PREORDER REQUEST FORM */
+.preorder-section {
+  position: relative;
+  padding: 5rem 0;
+  background: var(--mono-bg);
+  border-top: 1px solid var(--mono-border);
+}
+
+.preorder-form {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--mono-white);
+  border: 1px solid var(--mono-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.preorder-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.preorder-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  color: var(--mono-dark);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.preorder-field > span > span:first-child:not(.preorder-optional) {
+  color: var(--mono-red);
+}
+
+.preorder-field .preorder-optional {
+  color: var(--mono-dark-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.preorder-field input,
+.preorder-field select,
+.preorder-field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #D7DEEF;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: var(--mono-dark);
+  font: 500 0.95rem var(--font-body);
+}
+
+.preorder-field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.preorder-field input:focus,
+.preorder-field select:focus,
+.preorder-field textarea:focus {
+  outline: 3px solid var(--mono-blue-glow);
+  border-color: var(--mono-blue);
+}
+
+.preorder-field-wide {
+  grid-column: 1 / -1;
+}
+
+.preorder-disclaimer {
+  margin: 1.25rem 0;
+  color: var(--mono-dark-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.preorder-submit {
+  width: 100%;
+  min-height: 50px;
+}
+
+.preorder-status {
+  min-height: 1.3em;
+  margin-top: 0.75rem;
+  color: var(--mono-dark-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .preorder-form {
+    padding: 1.25rem;
+  }
+
+  .preorder-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preorder-field-wide {
+    grid-column: auto;
+  }
 }
 
 /* FEATURES SECTION */
